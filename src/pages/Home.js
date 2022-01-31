@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { StyleSheet, Text, View, TextInput} from 'react-native';
+import { StyleSheet, Text, View, TextInput, FlatList} from 'react-native';
 import { Button } from '../components/Button';
 import { SkillCard } from '../components/SkillCard';
 
@@ -31,11 +31,13 @@ export default function Home() {
 
      <Button onPress={handleAddNewSkill} />
 
-      {
-        mySkills.map(skill => (
-          <SkillCard skill={skill}></SkillCard>
-        ))
-      }
+      <FlatList 
+        data={mySkills}
+        keyExtractor={item => item}
+        renderItem={( {item }) =>(
+          <SkillCard skill={item} />
+        )}
+      />
       
 
     </View>
